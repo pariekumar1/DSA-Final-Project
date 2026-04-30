@@ -1,4 +1,4 @@
-Student Health Services — Patient Queue System
+Student Health Services: Patient Queue System
 A command-line program that manages patient flow for a student health clinic. 
 It supports regular appointment booking, a waitlist, emergency prioritization, and cancellations.
 
