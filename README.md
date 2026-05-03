@@ -20,9 +20,9 @@ Serves as the central log of all currently booked patients. Patients are added t
 Patient Queue (PatientQueue)
 Manages three lists internally:
 
-queue — booked patients in arrival order (FIFO), capped at max_capacity
-waitlist — patients who arrived when the clinic was full, also FIFO
-emergency — emergency patients who are always seen first regardless of arrival order
+queue: booked patients in arrival order (FIFO), capped at max_capacity
+waitlist: patients who arrived when the clinic was full, also FIFO
+emergency: emergency patients who are always seen first regardless of arrival order
 
 Node
 Each patient is wrapped in a Node object so they can be stored in the linked list.
