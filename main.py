@@ -30,7 +30,7 @@ class LinkedList:
             current = current.next
         return False
 
-#Class keeps track of various patient appointments
+#Class keeps track of various patient appointments and order
 class PatientQueue:
     def __init__(self, max_capacity):
         self.queue = []
