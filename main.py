@@ -2,7 +2,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-
+#Class helps with keeping track of patients
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -30,7 +30,7 @@ class LinkedList:
             current = current.next
         return False
 
-
+#Class keeps track of various patient appointments
 class PatientQueue:
     def __init__(self, max_capacity):
         self.queue = []
@@ -86,23 +86,37 @@ class PatientQueue:
             print("No patients remaining.")
 
     def status(self):
-        print("\n--- Clinic Status ---")
-        print("Booked (" + str(len(self.queue)) + "/" + str(self.max_capacity) + "): " +
-              (", ".join(p['name'] + " #" + str(p['id']) for p in self.queue) if self.queue else "empty"))
-        print("Emergency (" + str(len(self.emergency)) + "): " +
-              (", ".join(p['name'] + " #" + str(p['id']) for p in self.emergency) if self.emergency else "empty"))
-        print("Waitlist (" + str(len(self.waitlist)) + "): " +
-              (", ".join(p['name'] + " #" + str(p['id']) for p in self.waitlist) if self.waitlist else "empty"))
-        print("---------------------\n")
+        print("\nClinic Status")
+
+        booked = ""
+        for p in self.queue:
+            booked = booked + p['name'] + " #" + str(p['id']) + ", "
+        if booked == "":
+            booked = "empty"
+        print("Booked (" + str(len(self.queue)) + "/" + str(self.max_capacity) + "): " + booked)
+
+        emergency = ""
+        for p in self.emergency:
+            emergency = emergency + p['name'] + " #" + str(p['id']) + ", "
+        if emergency == "":
+            emergency = "empty"
+        print("Emergency (" + str(len(self.emergency)) + "): " + emergency)
+
+        waitlist = ""
+        for p in self.waitlist:
+            waitlist = waitlist + p['name'] + " #" + str(p['id']) + ", "
+        if waitlist == "":
+            waitlist = "empty"
+        print("Waitlist (" + str(len(self.waitlist)) + "): " + waitlist)
+
+        print()
 
 
-# --- Main loop ---
+# Main
 appointments = LinkedList()
-
 capacity = int(input("How many appointments are available today? "))
 clinic = PatientQueue(capacity)
 print("Clinic open. Commands: book, emergency, cancel, next, status, quit\n")
-
 while True:
     command = input("Command: ").strip().lower()
 
@@ -129,6 +143,5 @@ while True:
     elif command == "quit":
         print("Clinic closed.")
         break
-
     else:
         print("Unknown command. Try: book, emergency, cancel, next, status, quit")
